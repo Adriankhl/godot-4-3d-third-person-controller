@@ -62,3 +62,16 @@ func _on_generate_text_updated(new_text):
 
 func _on_close_button_pressed():
 	$OutputUI.visible = false
+
+
+func _notification(what):
+	match(what):
+		NOTIFICATION_WM_CLOSE_REQUEST:
+			## Handle Quit signal
+			print("Quiting")
+			stop_generate_text()
+			get_tree().quit() # default behavior
+
+
+func _exit_tree():
+	stop_generate_text()
