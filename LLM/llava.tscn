@@ -3,15 +3,77 @@
 [ext_resource type="Script" path="res://LLM/llava.gd" id="1_b20pk"]
 
 [node name="Llava" type="GDLlava"]
+model_path = "models/llava-phi-3-mini-int4.gguf"
+mmproj_path = "models/llava-phi-3-mini-mmproj-f16.gguf"
+context_size = 1024
 script = ExtResource("1_b20pk")
 
-[node name="LlavaUI" type="PanelContainer" parent="."]
+[node name="InputUI" type="Control" parent="."]
 visible = false
-offset_left = 71.0
-offset_top = 665.0
-offset_right = 1853.0
-offset_bottom = 942.0
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 286.0
+offset_top = 475.0
+offset_right = 1726.0
+offset_bottom = 1075.0
 
-[node name="Prompt" type="TextEdit" parent="LlavaUI"]
-layout_mode = 2
+[node name="Prompt" type="TextEdit" parent="InputUI"]
+offset_left = 40.0
+offset_top = 333.0
+offset_right = 1118.0
+offset_bottom = 521.0
 theme_override_font_sizes/font_size = 32
+wrap_mode = 1
+
+[node name="Screen" type="TextureRect" parent="InputUI"]
+layout_mode = 2
+offset_left = 131.0
+offset_top = -16.0
+offset_right = 1112.0
+offset_bottom = 292.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GenerateButton" type="Button" parent="InputUI"]
+offset_left = 1173.0
+offset_top = 363.0
+offset_right = 1388.0
+offset_bottom = 473.0
+theme_override_font_sizes/font_size = 32
+text = "Generate"
+
+[node name="OutputUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 307.0
+offset_top = 51.0
+offset_right = 1535.0
+offset_bottom = 374.0
+
+[node name="CloseButton" type="Button" parent="OutputUI"]
+layout_mode = 0
+offset_left = 1130.0
+offset_top = 63.0
+offset_right = 1180.0
+offset_bottom = 94.0
+text = "Close"
+
+[node name="Output" type="RichTextLabel" parent="OutputUI"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 58.0
+offset_right = 1126.0
+offset_bottom = 323.0
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+scroll_following = true
+
+[connection signal="generate_text_finished" from="." to="." method="_on_generate_text_finished"]
+[connection signal="generate_text_updated" from="." to="." method="_on_generate_text_updated"]
+[connection signal="pressed" from="InputUI/GenerateButton" to="." method="_on_generate_button_pressed"]
+[connection signal="pressed" from="OutputUI/CloseButton" to="." method="_on_close_button_pressed"]
