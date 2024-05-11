@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://xq1guqihiyew"]
+
+[ext_resource type="Script" path="res://LLM/llava.gd" id="1_b20pk"]
+
+[node name="Llava" type="GDLlava"]
+script = ExtResource("1_b20pk")
+
+[node name="LlavaUI" type="PanelContainer" parent="."]
+visible = false
+offset_left = 71.0
+offset_top = 665.0
+offset_right = 1853.0
+offset_bottom = 942.0
+
+[node name="Prompt" type="TextEdit" parent="LlavaUI"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32

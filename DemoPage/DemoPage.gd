@@ -12,6 +12,7 @@ enum INSTRUCTION_TYPES {KEYBOARD, JOYPAD}
 
 @onready var _demo_mouse_mode: int
 
+var is_llava_just_closed: bool = false
 
 func _ready() -> void:
 	get_tree().paused = true
@@ -69,3 +70,12 @@ func resume_demo() -> void:
 	tween.tween_property(demo_page_root, "modulate", Color.TRANSPARENT, 0.3)
 	tween.tween_callback(demo_page_root.hide)
 	Input.mouse_mode = _demo_mouse_mode as Input.MouseMode
+
+
+func _on_llava_llava_invisible():
+	set_process_input(true)
+	is_llava_just_closed = true
+
+
+func _on_llava_llava_visiable():
+	set_process_input(false)
