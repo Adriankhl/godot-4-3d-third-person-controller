@@ -50,6 +50,8 @@ func _on_generate_button_pressed():
 func _on_generate_text_finished(text):
 	$InputUI/GenerateButton.disabled = false
 	$OutputUI/CloseButton.disabled = false
+	print("Full generated text:")
+	print(text)
 
 
 func _on_generate_text_updated(new_text):
