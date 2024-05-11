@@ -5,7 +5,7 @@ tags: 3D third-person-shooter shooter controller
 description: "A 3D Third Person Shooter Controller Demo"
 ---
 
-# RoboBlast: Third-Person Shooter demo (Godot 4, 3D)
+# RoboBlast with Godot LLM addon: Third-Person Shooter demo (Godot 4, 3D)
 
 ![](static/third-person-shooter-demo.webp)
 
@@ -20,7 +20,12 @@ There are two kinds of enemies: flying wasps that fire bullets and beetles that 
 ## How to run:
 
 1. Download or clone the GitHub repository.
-2. Press <kbd>F5</kbd> or `Run Project`.
+2. Open the project and install the `Godot LLM` addon from the asset library. Alternatively, get the addon from the [github release page](https://github.com/Adriankhl/godot-llm/releases).
+3. Download a [supported](https://github.com/ggerganov/llama.cpp?tab=readme-ov-file#description) multimodal model in GGUF format, including botht the language model and the mmproj model. For example, `moondream2-text-model-f16.gguf` and `moondream2-mmproj-f16.gguf` from [this repo](https://huggingface.co/moondream/moondream2-gguf/tree/main).
+4. Reload the project, open `LLM/llava.tscn`, point `Model Path` and `Mmproj Path` to the corresponding model file.
+5. Press <kbd>F5</kbd> or `Run Project`.
+6. Close the demo page, press <kbd>L</kbd> to open the text generation UI, input some texts (e.g. "Describe the environment"), click `Generate`, then close the text generation UI by pressing <kbd>Esc</kbd>.
+7. Wait for a while, you will see the generated text appears at the top.
 
 ## Controls:
 
@@ -30,6 +35,8 @@ There are two kinds of enemies: flying wasps that fire bullets and beetles that 
 - <kbd>Left mouse</kbd> or <kbd>Xbox Ⓑ</kbd> to shoot.
 - <kbd>Right mouse</kbd> or <kbd>Xbox RT</kbd>to aim.
 - <kbd>Tab</kbd> or <kbd>Xbox Ⓧ</kbd> to cycle between bullets and grenades.
+- <kbd>L</kbd> to open the UI for multimodal text generation, <kbd>Esc</kbd> to close the UI.
+- <kbd>Alt</kbd> to toggle mouse capture.
 
 ## FAQ:
 
